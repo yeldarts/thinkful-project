@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 
+
 print "Starting part 1"
 testlist = [1, 4, 5, 6, 9, 9, 9]
 
@@ -41,7 +42,7 @@ plt.show() #this will generate the second graph
 
 plt.close()
 
-print "starting part2"
+print "starting part 2"
 loansData = pd.read_csv('https://spark-public.s3.amazonaws.com/dataanalysis/loansData.csv')
 #removes empty lines
 loansData.dropna(inplace=True)
@@ -53,3 +54,28 @@ plt.close()
 
 loansData.hist(column='Amount.Funded.By.Investors')
 plt.show()
+
+plt.close()
+plt.figure()
+graph = stats.probplot(loansData['Amount.Funded.By.Investors'], dist="norm", plot=plt)
+plt.show()
+plt.close()
+
+
+print "starting part 3"
+
+# Load the reduced version of the Lending Club Dataset
+loansData = pd.read_csv('https://spark-public.s3.amazonaws.com/dataanalysis/loansData.csv')
+# Drop null rows
+loansData.dropna(inplace=True)
+
+freq = collections.Counter(loansData['Open.CREDIT.Lines'])
+plt.figure()
+plt.bar(freq.keys(), freq.values(), width=2)
+plt.show()
+
+chi, p = stats.chisquare(freq.values())
+print chi
+# > 2408.433146517214
+print p
+# > 0.0

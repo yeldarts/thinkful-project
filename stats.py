@@ -46,3 +46,4 @@ print 'The variance for the Alcohol and Tobacco dataset is ' \
 print 'The standard deviation for the Alcohol and Tobacco dataset is ' \
 + str(df['Tobacco'].std()) + ' for Alcohol and '\
 + str(df['Tobacco'].std()) + ' for Tobacco'
+

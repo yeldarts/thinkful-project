@@ -33,7 +33,7 @@ print 'The median for the Alcohol and Tobacco dataset is ' \
 
 print 'The mode for the Alcohol and Tobacco dataset is ' \
 + str(stats.mode(df['Alcohol'])[0][0]) + ' for Alcohol and '\
-+ str(stats.mode(df['Tobacco'])) + ' for Tobacco'
++ str(stats.mode(df['Tobacco'])[0][0]) + ' for Tobacco'
 
 print 'The range for the Alcohol and Tobacco dataset is ' \
 + str(max(df['Alcohol']) - min(df['Alcohol'])) + ' for Alcohol and '\
