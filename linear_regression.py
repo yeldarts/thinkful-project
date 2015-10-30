@@ -54,7 +54,7 @@ print loansData['Loan.Length'][0:5]
 print loansData['FICO.Range'][0:5]
 	
 	
-	
+loansData.to_csv('loansData_clean.csv', header=True, index=False)	
 	
 
 
@@ -63,11 +63,15 @@ p = loansData['FICO.Score'].hist()
 plt.show()
 plt.close()
 
-a = pd.scatter_matrix(loansData, alpha=0.05, figsize=(10,10))
-plt.show()
-plt.close()
+#a1 = pd.scatter_matrix(loansData, alpha=0.05, figsize=(10,10), diagonal='kde')
+pd.scatter_matrix(loansData, alpha=0.05, figsize=(10,10), diagonal='kde')
+#print type(a1)
+#plt.show()
+#plt.close()
 
-a = pd.scatter_matrix(loansData, alpha=0.05, figsize=(10,10), diagonal='hist')
+#a2 = pd.scatter_matrix(loansData, alpha=0.05, figsize=(10,10), diagonal='hist')
+pd.scatter_matrix(loansData, alpha=0.05, figsize=(10,10), diagonal='hist')
+
 plt.show()
 plt.close()
 
@@ -99,3 +103,8 @@ plt.show()
 plt.close()
 print "done"
 print f.summary()
+
+
+#y = b + a1(FICO Score) + a2(10000)
+#FICO = [650:850]
+#plt.plot(FICO, y)
