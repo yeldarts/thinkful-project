@@ -2,7 +2,8 @@ import numpy as np
 import pandas as pd
 import statsmodels.api as sm
 import statsmodels.formula.api as smf
-import matplotlib.pyplot as plt 
+import matplotlib.pyplot as plt
+
 
 print 'Preparing the dataset...'
 

@@ -2,7 +2,8 @@ import numpy as np
 import pandas as pd
 import statsmodels.api as sm
 import statsmodels.formula.api as smf
-import matplotlib.pyplot as plt 
+import matplotlib.pyplot as plt
+import datetime 
 
 print 'Preparing the dataset...'
 
@@ -34,7 +35,7 @@ print '~~~~~~ MODEL 1 ~~~~~~'
 print result.summary()
 
 # Add home_ownershipership to model
-loansDF['home_ownership'] = pd.Categorical(loansDF.home_ownership).labels
+loansDF['home_ownership'] = pd.Categorical(loansDF.home_ownership).codes
 
 model2 = sm.OLS(loansDF['int_rate'], loansDF[['Intercept', 'annual_inc', 'home_ownership']])
 result2 = model2.fit()
