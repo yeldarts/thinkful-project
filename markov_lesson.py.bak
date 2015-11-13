@@ -1,0 +1,45 @@
+import pandas as pd
+df = pd.DataFrame({'rainy': [.4, .7], 
+                   'sunny': [.6, .3]
+                  }, 
+                  index=["rainy", "sunny"])
+print df
+
+#for two transitions
+print df.dot(df)
+
+print ""
+print "starting market example"
+print ""
+
+#	    bull	bear	stag
+#bull	0.9	0.075	0.025
+#bear	0.15	0.8	0.05
+#stag	0.25	0.25	0.5
+
+df = pd.DataFrame({'bull': [.9,.075,.025],
+	                 'bear': [.15,.8,.05],
+	                 'stag': [.25,.25,.5]
+	                },
+	                index=['bull','bear','stag'])
+print df
+
+inputVar = 'yes'
+def my_range(start, end, step):
+    while start <= end:
+        yield start
+        start += step
+while inputVar != 'no': 
+    loopDF = df
+    inputVar = input("How many loops(no to stop): ")
+    inputVar = str(inputVar)
+    print ("you entered " + inputVar) 
+    if inputVar != 'no':
+        loopInt = int(inputVar) - 1
+        for x in my_range(1, loopInt, 1):
+            loopDF = loopDF.dot(df)
+        print loopDF
+
+print "" 
+print "finished"
+            
